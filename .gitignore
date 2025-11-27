@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+data/raw/
+data/interim/
+data/models/
+*.sqlite
+*.log
+*.pkl
+*.joblib
+.env
