@@ -1,0 +1,19 @@
+# features/feature_config.yaml
+grid:
+  resolution_m: 1000     # grid cell size in meters (500 or 1000)
+  buffer_m: 0            # optional buffer around bbox
+features:
+  - road_density
+  - dist_to_industry
+  - ndvi_mean
+  - pop_density
+  - elev_mean
+  - pm25
+  - pm10
+  - aqi
+weights:
+  pollution: 0.35
+  traffic: 0.2
+  industry: 0.15
+  green: 0.15
+  population: 0.1
