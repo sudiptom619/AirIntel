@@ -1,0 +1,10 @@
+geopandas
+rasterio
+rioxarray
+rasterstats
+numpy
+pandas
+shapely
+pyproj
+xarray
+requests
