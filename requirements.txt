@@ -8,3 +8,13 @@ shapely
 pyproj
 xarray
 requests
+# Async & ETL deps
+aiohttp
+aiofiles
+scipy
+pyproj
+scikit-learn
+joblib
+xgboost
+shap
+matplotlib
