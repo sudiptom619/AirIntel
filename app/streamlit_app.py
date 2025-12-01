@@ -239,8 +239,19 @@ if map_data and map_data.get("last_clicked"):
     clicked_lat = map_data["last_clicked"]["lat"]
     clicked_lon = map_data["last_clicked"]["lng"]
 
-    # update the single selected location
-    st.session_state.selected_location = {"lat": clicked_lat, "lon": clicked_lon}
+    # Check if the clicked location is different from the currently stored one
+    prev = st.session_state.selected_location
+    is_new_click = (
+        prev is None
+        or prev.get("lat") != clicked_lat
+        or prev.get("lon") != clicked_lon
+    )
+
+    if is_new_click:
+        # update the single selected location
+        st.session_state.selected_location = {"lat": clicked_lat, "lon": clicked_lon}
+        # Rerun to immediately re-center the map and heatmap on the new location
+        st.rerun()
 
 
 # ------------------------------
