@@ -1,0 +1,158 @@
+/* app/assets/app.css - Custom styles for the Streamlit app */
+
+/* General styling */
+.stApp {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Score card styling */
+.score-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.score-value {
+    font-size: 3em;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.score-label {
+    font-size: 0.9em;
+    opacity: 0.9;
+}
+
+/* Component bars */
+.component-bar {
+    height: 24px;
+    border-radius: 12px;
+    background: linear-gradient(90deg, #ff6b6b 0%, #feca57 50%, #48dbfb 100%);
+    margin: 8px 0;
+    position: relative;
+}
+
+.component-fill {
+    height: 100%;
+    border-radius: 12px;
+    transition: width 0.3s ease;
+}
+
+.component-label {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: bold;
+    color: #333;
+}
+
+/* Comparison styles */
+.comparison-card {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px 0;
+}
+
+.winner-badge {
+    background: #28a745;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+/* Legend styles */
+.legend-box {
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    margin-right: 10px;
+}
+
+/* Map controls */
+.map-controls {
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Audio player customization */
+.audio-player {
+    width: 100%;
+    margin: 10px 0;
+}
+
+/* Sidebar improvements */
+.sidebar-section {
+    background: #f0f2f6;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .score-value {
+        font-size: 2em;
+    }
+    
+    .comparison-card {
+        padding: 10px;
+    }
+}
+
+/* Animation for loading states */
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.loading {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Tooltip improvements */
+.custom-tooltip {
+    background: #333;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.85em;
+}
+
+/* Status badges */
+.status-good {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.status-moderate {
+    color: #ffc107;
+    font-weight: bold;
+}
+
+.status-poor {
+    color: #dc3545;
+    font-weight: bold;
+}
