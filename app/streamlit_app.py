@@ -240,11 +240,13 @@ if map_data and map_data.get("last_clicked"):
     clicked_lon = map_data["last_clicked"]["lng"]
 
     # Check if the clicked location is different from the currently stored one
+    # Use tolerance-based comparison for floating-point coordinates
     prev = st.session_state.selected_location
+    COORD_TOLERANCE = 1e-6
     is_new_click = (
         prev is None
-        or prev.get("lat") != clicked_lat
-        or prev.get("lon") != clicked_lon
+        or abs(prev.get("lat", 0) - clicked_lat) > COORD_TOLERANCE
+        or abs(prev.get("lon", 0) - clicked_lon) > COORD_TOLERANCE
     )
 
     if is_new_click:
