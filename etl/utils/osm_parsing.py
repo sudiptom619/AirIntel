@@ -19,7 +19,7 @@ def overpass_to_gdf(osm_json):
         for nid in way.get('nodes', []):
             if nid in nodes:
                 coords.append(nodes[nid])
-        if not coords:
+        if len(coords) < 2:
             continue
 
         tags = way.get('tags', {})
@@ -42,8 +42,13 @@ def overpass_to_gdf(osm_json):
     if not features:
         return gpd.GeoDataFrame(columns=['geometry', 'osm_id'], geometry='geometry', crs="EPSG:4326")
 
-    gdf = gpd.GeoDataFrame.from_records(
-        [ {**f['properties'], "geometry": f['geometry']} for f in features ],
-        geometry='geometry', crs="EPSG:4326"
-    )
+    # Build records list with geometry as a separate column
+    records = []
+    geometries = []
+    for f in features:
+        record = {**f['properties']}
+        geometries.append(f['geometry'])
+        records.append(record)
+    
+    gdf = gpd.GeoDataFrame(records, geometry=geometries, crs="EPSG:4326")
     return gdf

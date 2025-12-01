@@ -1,11 +1,71 @@
+# Virtual environment
 .venv/
+venv/
+env/
+ENV/
+
+# Python cache
 __pycache__/
-*.pyc
-data/raw/
-data/interim/
-data/models/
+*.py[cod]
+*$py.class
+*.pyo
+
+# Distribution / packaging
+dist/
+build/
+eggs/
+*.egg-info/
+*.egg
+
+# Data files (raw/interim - keep .gitkeep)
+data/raw/*.tif
+data/raw/*.json
+data/raw/osm/
+data/raw/ndvi/
+data/raw/population/
+data/raw/elevation/
+data/raw/air_quality/
+data/interim/*.tif
+data/interim/*.json
+data/interim/*.geojson
+data/models/*.pkl
+data/models/*.joblib
+
+# Keep processed data for demo
+# data/processed/
+
+# Logs and databases
 *.sqlite
 *.log
-*.pkl
-*.joblib
+*.db
+
+# Secrets and config
 .env
+.env.local
+*.pem
+secrets.yaml
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Temporary files
+tmp/
+*.tmp
+*.temp
+
+# Audio temp files
+*.mp3
+
+# HTML debug files
+debug_*.html

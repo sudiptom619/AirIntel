@@ -1,19 +1,45 @@
 # features/feature_config.yaml
+# Configuration for feature engineering and livability scoring
+
 grid:
   resolution_m: 1000     # grid cell size in meters (500 or 1000)
   buffer_m: 0            # optional buffer around bbox
+
 features:
   - road_density
   - dist_to_industry
   - ndvi_mean
   - pop_density
   - elev_mean
+  - flood_proxy
   - pm25
   - pm10
   - aqi
+
+# Weights for livability score computation
+# These weights sum to 1.0 and determine each component's contribution
 weights:
-  pollution: 0.35
-  traffic: 0.2
-  industry: 0.15
-  green: 0.15
-  population: 0.1
+  pollution: 0.30      # Air quality (PM2.5/PM10)
+  traffic: 0.15        # Road density (higher = worse)
+  industry: 0.15       # Distance to industrial (farther = better)
+  green: 0.15          # NDVI vegetation (higher = better)
+  population: 0.10     # Population density (lower = better)
+  flood: 0.10          # Flood risk (lower = better)
+  elev: 0.05           # Elevation factor
+
+# Scoring thresholds and breakpoints
+thresholds:
+  pm25:
+    good: 12
+    moderate: 35
+    unhealthy: 55
+    very_unhealthy: 150
+  ndvi:
+    sparse: 0.2
+    moderate: 0.4
+    dense: 0.6
+  industry_distance:
+    very_close: 500
+    close: 1000
+    moderate: 2000
+    far: 5000

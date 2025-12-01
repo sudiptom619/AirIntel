@@ -53,8 +53,18 @@ def osm_to_gdfs(osm_json):
             # road/line
             line = {"type":"Feature", "geometry":{"type":"LineString", "coordinates": coords}, "properties": way.get('tags', {})}
             lines.append(line)
-    roads_gdf = gpd.GeoDataFrame.from_features(lines, crs="EPSG:4326")
-    inds_gdf = gpd.GeoDataFrame.from_features(polys, crs="EPSG:4326")
+    
+    # Handle empty feature lists gracefully
+    if lines:
+        roads_gdf = gpd.GeoDataFrame.from_features(lines, crs="EPSG:4326")
+    else:
+        roads_gdf = gpd.GeoDataFrame(columns=['geometry'], geometry='geometry', crs="EPSG:4326")
+    
+    if polys:
+        inds_gdf = gpd.GeoDataFrame.from_features(polys, crs="EPSG:4326")
+    else:
+        inds_gdf = gpd.GeoDataFrame(columns=['geometry'], geometry='geometry', crs="EPSG:4326")
+    
     return roads_gdf, inds_gdf
 
 if __name__ == "__main__":
